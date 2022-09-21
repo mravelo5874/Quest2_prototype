@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class PlayerCameraController : MonoBehaviour 
 {
+    public static PlayerCameraController instance;
+
     public enum CameraControlMode
     {
         Mouse,
@@ -30,6 +32,12 @@ public class PlayerCameraController : MonoBehaviour
 
     void Awake()
     {
+        // set instance
+        if (instance == null)
+        {
+            instance = this;
+        }
+
         // hide and lock mouse cursor
         if (cameraControlMode == CameraControlMode.Mouse)
         {
