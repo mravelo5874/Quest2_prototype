@@ -1,0 +1,24 @@
+############################################################
+#							   #
+#		 LIST OF WHAT WE NEED TO DO	           #
+#					     		   #
+############################################################
+
+Because we will not have access to the quest all all times |
+during development, I've added two different means of	   |
+playing the game. If the quest is hooked up to the project |
+then the game will use the handheld\hand-tracking controls |
+while playing the game. However, if no device is detected  |
+then the player can use mouse\keyboard to play the game in |
+the exact same way (this is mostly just for testing when   |
+developing the mechanics).				   |
+
+[complete]	- create project and github repo
+[complete]	- barebones scaling mechanic for POC
+not-complete 	- hook up the quest 2 with project
+not-complete 	- movement using mouse\keyboard
+not-complete	- movement using quest handheld devices
+not-complete 	- time-perception depending on current size
+not-complete 	- add moving object(s) to be able to see time-perception changes
+not-complete 	- create interesting world to explore as different sizes
+not-complete 	- research into LOD for objects in scene
