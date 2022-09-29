@@ -9,7 +9,7 @@ public class PlayerScaleController : MonoBehaviour
     public float minScale;
     public float scaleRate = 1.0f;
     // private scale option variables
-    private float scaleMultiplier = 1000f;
+    private float scaleMultiplier = 1f;
     private float currentScale = 1.0f;
 
     [Header("Camera Options")]
@@ -44,14 +44,14 @@ public class PlayerScaleController : MonoBehaviour
             if (growInput ^ shrinkInput)
             {
                 float currentScaleRate = scaleRate / scaleMultiplier;
-                // negate scale rate if shrinking\
+                // negate scale rate if shrinking
                 if (shrinkInput)
                 {
                     currentScaleRate *= -1f;
                 }
 
                 // set current scale and clamp at min/max
-                currentScale += currentScaleRate;
+                currentScale += currentScaleRate * Time.deltaTime;
                 if (currentScale > maxScale)
                     currentScale = maxScale;
                 else if (currentScale < minScale)
