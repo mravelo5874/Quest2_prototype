@@ -59,11 +59,11 @@ public class PlayerScaleController : MonoBehaviour
 
                 // update transform scale
                 transform.localScale = new Vector3(1f, currentScale, 1f);
-                scaleText.text = "current scale: " + currentScale;
+                scaleText.text = "current scale: " + currentScale + "\ncurrent position: " + transform.position;
             }
         }
 
-        // update camera
+        // update cameras
         if (changeFOV)
         {
             float scale01 = Mathf.InverseLerp(maxScale, minScale, currentScale);

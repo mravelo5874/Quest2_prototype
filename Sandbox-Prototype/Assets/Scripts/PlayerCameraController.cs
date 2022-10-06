@@ -14,6 +14,7 @@ public class PlayerCameraController : MonoBehaviour
         Mouse,
         Headset
     }
+    
     public CameraControlMode cameraControlMode;
 
 	public float Sensitivity 
