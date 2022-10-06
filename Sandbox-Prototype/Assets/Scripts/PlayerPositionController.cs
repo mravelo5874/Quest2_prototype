@@ -53,7 +53,7 @@ public class PlayerPositionController : MonoBehaviour
             bool backward_input = Input.GetKey(KeyCode.S);
             
             float forward_multiplier = (forward_input) ? 1.0f : (backward_input) ? -1.0f : 0.0f;
-            float right_multiplier = (right_input) ? 1.0f : (backward_input) ? -1.0f : 0.0f;
+            float right_multiplier = (right_input) ? 1.0f : (left_input) ? -1.0f : 0.0f;
 
             transform.Translate(Camera.main.transform.forward * forward_multiplier * 0.01f
                             +   Camera.main.transform.right * right_multiplier * 0.01f);
