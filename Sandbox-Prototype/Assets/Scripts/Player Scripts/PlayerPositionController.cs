@@ -10,42 +10,21 @@ using TMPro;
 public class PlayerPositionController : MonoBehaviour 
 {
     public static PlayerPositionController instance;
-
-    public enum PositionControlMode
-    {
-        Keyboard,
-        Headset
-    }
-    
-    public PositionControlMode positionControlMode;
-
-	public float Sensitivity 
-    {
-		get { return sensitivity; }
-		set { sensitivity = value; }
-	}
-	[Range(0.1f, 9f)][SerializeField] float sensitivity = 2f;
-	[Tooltip("Limits vertical camera rotation. Prevents the flipping that happens when rotation goes above 90.")]
-	[Range(0f, 90f)][SerializeField] float yRotationLimit = 88f;
-
-	Vector3 position;
-
-    [Header("UI Options")]
-    public TextMeshProUGUI positionText;
-
     void Awake()
     {
         // set instance
         if (instance == null)
         {
-            positionControlMode = PositionControlMode.Keyboard;
             instance = this;
         }
     }
 
+    [Header("UI Options")]
+    public TextMeshProUGUI positionText;
+
 	void Update()
     {
-        if (positionControlMode == PositionControlMode.Keyboard)
+        if (GameManager.instance.playMode == GameManager.PlayMode.KeyboardAndMouse)
         {
             bool forward_input = Input.GetKey(KeyCode.W);
             bool left_input = Input.GetKey(KeyCode.A);
@@ -58,5 +37,7 @@ public class PlayerPositionController : MonoBehaviour
             transform.Translate(Camera.main.transform.forward * forward_multiplier * 0.01f
                             +   Camera.main.transform.right * right_multiplier * 0.01f);
         }
+
+        positionText.text = "current pos: " + transform.position;
 	}
 }

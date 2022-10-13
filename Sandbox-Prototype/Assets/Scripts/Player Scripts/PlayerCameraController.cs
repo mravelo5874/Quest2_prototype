@@ -9,14 +9,6 @@ public class PlayerCameraController : MonoBehaviour
 {
     public static PlayerCameraController instance;
 
-    public enum CameraControlMode
-    {
-        Mouse,
-        Headset
-    }
-    
-    public CameraControlMode cameraControlMode;
-
 	public float Sensitivity 
     {
 		get { return sensitivity; }
@@ -40,7 +32,7 @@ public class PlayerCameraController : MonoBehaviour
         }
 
         // hide and lock mouse cursor
-        if (cameraControlMode == CameraControlMode.Mouse)
+        if (GameManager.instance.playMode == GameManager.PlayMode.KeyboardAndMouse)
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
@@ -50,7 +42,7 @@ public class PlayerCameraController : MonoBehaviour
 	void Update()
     {
         // use mouse to control player camera
-        if (cameraControlMode == CameraControlMode.Mouse)
+        if (GameManager.instance.playMode == GameManager.PlayMode.KeyboardAndMouse)
         {
             rotation.x += Input.GetAxis(xAxis) * sensitivity;
             rotation.y += Input.GetAxis(yAxis) * sensitivity;

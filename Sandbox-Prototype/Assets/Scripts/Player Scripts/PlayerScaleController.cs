@@ -34,7 +34,7 @@ public class PlayerScaleController : MonoBehaviour
     void Update()
     {
         // use keyboard controls if camera control mode is mouse
-        if (PlayerCameraController.instance.cameraControlMode == PlayerCameraController.CameraControlMode.Mouse)
+        if (GameManager.instance.playMode == GameManager.PlayMode.KeyboardAndMouse)
         {            
             // left shift for growing
             bool growInput = Input.GetKey(KeyCode.LeftShift);
@@ -59,7 +59,7 @@ public class PlayerScaleController : MonoBehaviour
 
                 // update transform scale
                 transform.localScale = new Vector3(1f, currentScale, 1f);
-                scaleText.text = "current scale: " + currentScale + "\ncurrent position: " + transform.position;
+                scaleText.text = "current scale: " + currentScale;
             }
         }
 
