@@ -36,6 +36,12 @@ public class PlayerPositionController : MonoBehaviour
 
             transform.Translate(Camera.main.transform.forward * forward_multiplier * 0.01f
                             +   Camera.main.transform.right * right_multiplier * 0.01f);
+        } else {
+            float horizontal_input = Input.GetAxis("1");
+            float forward_input = Input.GetAxis("2");
+
+            transform.Translate(Camera.main.transform.forward * forward_input * 0.01f
+                +   Camera.main.transform.right * horizontal_input * 0.01f);
         }
 
         positionText.text = "current pos: " + transform.position;

@@ -23,7 +23,7 @@ public class PlayerCameraController : MonoBehaviour
 	const string xAxis = "Mouse X"; 
 	const string yAxis = "Mouse Y";
 
-    void Awake()
+    void Start()
     {
         // set instance
         if (instance == null)
