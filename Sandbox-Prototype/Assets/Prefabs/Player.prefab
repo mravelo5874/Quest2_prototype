@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3241d6f376c82b745bd82185dab9f584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraControlMode: 0
   sensitivity: 2
   yRotationLimit: 88
 --- !u!20 &6979136219371044419
@@ -161,9 +160,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6979136220224163225}
   - component: {fileID: 6979136220224163224}
+  - component: {fileID: 2032866524}
   - component: {fileID: 6979136220224163226}
+  - component: {fileID: 2032866526}
+  - component: {fileID: 2032866525}
   m_Layer: 0
-  m_Name: XRRig
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,6 +204,20 @@ MonoBehaviour:
   m_TrackingOriginMode: 1
   m_TrackingSpace: 0
   m_CameraYOffset: 1
+--- !u!114 &2032866524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6979136220224163223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 961524327a9074dd9bb09e9d188dca3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSpeed: 4
+  positionText: {fileID: 0}
 --- !u!114 &6979136220224163226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,3 +238,33 @@ MonoBehaviour:
   minFOV: 40
   maxFOV: 90
   scaleText: {fileID: 0}
+--- !u!54 &2032866526
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6979136220224163223}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!136 &2032866525
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6979136220224163223}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 1.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.75, z: 0}

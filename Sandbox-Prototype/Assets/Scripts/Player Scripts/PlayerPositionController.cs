@@ -19,6 +19,8 @@ public class PlayerPositionController : MonoBehaviour
         }
     }
 
+    public float playerSpeed = 1.0f;
+
     [Header("UI Options")]
     public TextMeshProUGUI positionText;
 
@@ -34,8 +36,8 @@ public class PlayerPositionController : MonoBehaviour
             float forward_multiplier = (forward_input) ? 1.0f : (backward_input) ? -1.0f : 0.0f;
             float right_multiplier = (right_input) ? 1.0f : (left_input) ? -1.0f : 0.0f;
 
-            transform.Translate(Camera.main.transform.forward * forward_multiplier * 0.01f
-                            +   Camera.main.transform.right * right_multiplier * 0.01f);
+            transform.Translate(Camera.main.transform.forward * forward_multiplier * 0.01f * playerSpeed
+                            +   Camera.main.transform.right * right_multiplier * 0.01f * playerSpeed);
         }
 
         positionText.text = "current pos: " + transform.position;

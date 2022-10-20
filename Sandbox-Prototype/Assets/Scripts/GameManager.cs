@@ -20,6 +20,4 @@ public class GameManager : MonoBehaviour
         VRHeadset
     }
     public PlayMode playMode; // which play mode are we in?
-
-    
 }
