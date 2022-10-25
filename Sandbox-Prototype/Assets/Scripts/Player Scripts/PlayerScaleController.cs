@@ -3,6 +3,9 @@ using TMPro;
 
 public class PlayerScaleController : MonoBehaviour
 {
+    public static PlayerScaleController instance;
+
+
     [Header("Scale Options")]
     public float startScale = 2.5f;
     public float maxScale;
@@ -11,6 +14,7 @@ public class PlayerScaleController : MonoBehaviour
     // private scale option variables
     private float scaleMultiplier = 1f;
     private float currentScale = 1.0f;
+    public float GetCurrentScale() { return currentScale; } // public getter
 
     [Header("Camera Options")]
     public bool changeFOV;
@@ -24,6 +28,11 @@ public class PlayerScaleController : MonoBehaviour
 
     void Awake()
     {
+        // set instance
+        if (instance == null)
+        {
+            instance = this;
+        }
         // set staring scale
         currentScale = startScale;
         transform.localScale = new Vector3(1f, currentScale, 1f);
