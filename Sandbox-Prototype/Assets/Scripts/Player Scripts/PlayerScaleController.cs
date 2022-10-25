@@ -5,9 +5,8 @@ public class PlayerScaleController : MonoBehaviour
 {
     public static PlayerScaleController instance;
 
-
     [Header("Scale Options")]
-    public float startScale = 2.5f;
+    public float startScale = 1f;
     public float maxScale;
     public float minScale;
     public float scaleRate = 1.0f;
@@ -40,9 +39,9 @@ public class PlayerScaleController : MonoBehaviour
         scaleText.text = "current scale: " + currentScale;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        OVRInput.Update();
+        OVRInput.FixedUpdate();
 
         bool growInput = false;
         bool shrinkInput = false;

@@ -24,7 +24,7 @@ public class PlayerPositionController : MonoBehaviour
     [Header("UI Options")]
     public TextMeshProUGUI positionText;
 
-	void Update()
+	void FixedUpdate()
     {
         bool forward_input = false;
         bool backward_input = false;
@@ -49,10 +49,10 @@ public class PlayerPositionController : MonoBehaviour
         float forward_multiplier = (forward_input) ? 1.0f : (backward_input) ? -1.0f : 0.0f;
         float right_multiplier = (right_input) ? 1.0f : (left_input) ? -1.0f : 0.0f;
 
-        float currentScale = PlayerScaleController.instance.GetCurrentScale();
+        float speedRegulator = playerSpeed * Mathf.Clamp(Mathf.Log(PlayerScaleController.instance.GetCurrentScale()), 0.1f, float.MaxValue) * 0.01f;
 
-        transform.Translate(Camera.main.transform.forward * forward_multiplier * 0.01f * playerSpeed * currentScale
-                        +   Camera.main.transform.right * right_multiplier * 0.01f * playerSpeed * currentScale);
+        transform.Translate(Camera.main.transform.forward * forward_multiplier * speedRegulator
+                        +   Camera.main.transform.right * right_multiplier * speedRegulator);
         positionText.text = "current pos: " + transform.position;
 	}
 }
