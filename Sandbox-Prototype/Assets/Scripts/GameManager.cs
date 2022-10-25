@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     void Awake()
     {
+        this.playMode = PlayMode.KeyboardAndMouse;
         // make this GameManager the only instance
         if (!instance)
         {
@@ -19,5 +20,6 @@ public class GameManager : MonoBehaviour
         KeyboardAndMouse,
         VRHeadset
     }
+    
     public PlayMode playMode; // which play mode are we in?
 }

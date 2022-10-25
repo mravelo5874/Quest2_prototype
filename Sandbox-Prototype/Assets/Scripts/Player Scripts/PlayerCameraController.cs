@@ -30,11 +30,10 @@ public class PlayerCameraController : MonoBehaviour
         {
             instance = this;
         }
-
         // hide and lock mouse cursor
         if (GameManager.instance.playMode == GameManager.PlayMode.KeyboardAndMouse)
         {
-            Cursor.visible = false;
+            Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
