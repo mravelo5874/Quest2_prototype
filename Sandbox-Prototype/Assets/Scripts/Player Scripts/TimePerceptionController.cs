@@ -14,6 +14,9 @@ public class TimePerceptionController : MonoBehaviour
         }
     }
 
+    private float timeScale = 1f;
+    public float GetGameTimeScale() { return timeScale; } // public getter
+
     public bool changeTimeScale;
     public float maxTimeScale = 2f;
     public float minTimeScale = 0.5f;
@@ -31,15 +34,15 @@ public class TimePerceptionController : MonoBehaviour
 
             if (currentScale > startScale)
             {
-                Time.timeScale = Mathf.Lerp(1f, maxTimeScale, currentScale / maxScale);
+                timeScale = Mathf.Lerp(1f, maxTimeScale, currentScale / maxScale);
             }
             else if (currentScale <= startScale)
             {
-                Time.timeScale = Mathf.Lerp(minTimeScale, 1f, currentScale / startScale);
+                timeScale = Mathf.Lerp(minTimeScale, 1f, currentScale / startScale);
             }
 
             // set time scale text
-            timeScaleText.text = "current time scale: " + Time.timeScale;
+            timeScaleText.text = "current time scale: " + timeScale;
         }
     }
 }

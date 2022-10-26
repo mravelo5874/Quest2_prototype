@@ -12,6 +12,13 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+
+        // automatically set play mode
+        #if UNITY_EDITOR
+            playMode = PlayMode.KeyboardAndMouse;
+        #else
+            playMode = PlayMode.VRHeadset;
+        #endif
     }
 
     public enum PlayMode

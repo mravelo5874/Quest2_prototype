@@ -6039,11 +6039,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6294929895715046384, guid: 8b80270e136a9d5468ed234e1a1f22c6, type: 3}
       propertyPath: maxScale
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6294929895715046384, guid: 8b80270e136a9d5468ed234e1a1f22c6, type: 3}
       propertyPath: minScale
-      value: 0.1
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6294929895715046384, guid: 8b80270e136a9d5468ed234e1a1f22c6, type: 3}
       propertyPath: changeFOV
@@ -6051,7 +6051,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6294929895715046384, guid: 8b80270e136a9d5468ed234e1a1f22c6, type: 3}
       propertyPath: scaleRate
-      value: 0.1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6294929895715046384, guid: 8b80270e136a9d5468ed234e1a1f22c6, type: 3}
       propertyPath: scaleText

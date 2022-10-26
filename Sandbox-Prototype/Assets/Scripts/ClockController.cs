@@ -14,7 +14,7 @@ public class ClockController : MonoBehaviour
 
     void Update()
     {        
-        timer += Time.deltaTime;
+        timer += Time.deltaTime * TimePerceptionController.instance.GetGameTimeScale();
 
         // update hands
         secondHandPivot.localRotation = Quaternion.Euler(0f, 0f, timer * SEC_TO_DEG);

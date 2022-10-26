@@ -9,9 +9,9 @@ public class PlayerScaleController : MonoBehaviour
     public float startScale = 1f;
     public float maxScale;
     public float minScale;
-    public float scaleRate = 3f;
+    public float scaleRate;
     // private scale option variables
-    private float currentScale = 1.0f;
+    private float currentScale = 1f;
     public float GetCurrentScale() { return currentScale; } // public getter
 
     [Header("Camera Options")]
@@ -75,7 +75,7 @@ public class PlayerScaleController : MonoBehaviour
             }
             else if (currentScale < 1f)
             {
-                currentScale += currentScaleRate * 0.1f;
+                currentScale += currentScaleRate * 0.25f;
             }
 
             if (currentScale > maxScale)
