@@ -26,6 +26,8 @@ public class PlayerPositionController : MonoBehaviour
 
 	void FixedUpdate()
     {
+        OVRInput.FixedUpdate();
+        
         bool forward_input = false;
         bool backward_input = false;
         bool left_input = false;

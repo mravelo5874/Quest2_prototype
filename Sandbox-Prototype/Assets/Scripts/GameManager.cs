@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     void Awake()
     {
-        this.playMode = PlayMode.KeyboardAndMouse;
         // make this GameManager the only instance
         if (!instance)
         {
