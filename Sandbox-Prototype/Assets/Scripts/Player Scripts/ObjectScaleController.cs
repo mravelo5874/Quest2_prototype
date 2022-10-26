@@ -5,12 +5,10 @@ public class ObjectScaleController : MonoBehaviour
 {
     public static ObjectScaleController instance;
 
-    float counter;
     float scaleRate = 1.0f;
 
     void Awake()
     {
-        counter = 1.0f;
         // set instance
         if (instance == null)
         {

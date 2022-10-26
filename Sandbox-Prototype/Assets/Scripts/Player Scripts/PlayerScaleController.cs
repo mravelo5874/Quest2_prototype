@@ -9,9 +9,8 @@ public class PlayerScaleController : MonoBehaviour
     public float startScale = 1f;
     public float maxScale;
     public float minScale;
-    public float scaleRate = 1.0f;
+    public float scaleRate = 3f;
     // private scale option variables
-    private float scaleMultiplier = 1f;
     private float currentScale = 1.0f;
     public float GetCurrentScale() { return currentScale; } // public getter
 
@@ -63,25 +62,31 @@ public class PlayerScaleController : MonoBehaviour
         // boolean XOR (either grow or shrink or neither)
         if (growInput ^ shrinkInput)
         {
-            float currentScaleRate = scaleRate / scaleMultiplier;
+            float currentScaleRate = scaleRate;
             // negate scale rate if shrinking
             if (shrinkInput)
             {
                 currentScaleRate *= -1f;
             }
 
-            // set current scale and clamp at min/max
-            currentScale += currentScaleRate * Time.deltaTime;
+            if (currentScale >= 1f)
+            {
+                currentScale += currentScaleRate;
+            }
+            else if (currentScale < 1f)
+            {
+                currentScale += currentScaleRate * 0.1f;
+            }
+
             if (currentScale > maxScale)
                 currentScale = maxScale;
-            else if (currentScale < minScale)
+            if (currentScale < minScale)
                 currentScale = minScale;
 
             // update transform scale
             transform.localScale = new Vector3(1f, currentScale, 1f);
             scaleText.text = "current scale: " + currentScale;
         }
-        
 
         // update cameras
         if (changeFOV)
