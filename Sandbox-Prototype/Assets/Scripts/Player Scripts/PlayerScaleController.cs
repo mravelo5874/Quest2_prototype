@@ -11,7 +11,7 @@ public class PlayerScaleController : MonoBehaviour
     public float maxScale;
     public float minScale;
     public float scaleRate;
-    public float timeBetweenScaleSoundFX = 1f;
+    public float timeBetweenScaleSoundFX = 3f;
     // private scale option variables
     private float currentScale = 1f;
     public float GetCurrentScale() { return currentScale; } // public getter
