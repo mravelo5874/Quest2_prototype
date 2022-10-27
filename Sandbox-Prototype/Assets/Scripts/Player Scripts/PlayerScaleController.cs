@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerScaleController : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class PlayerScaleController : MonoBehaviour
     public float maxScale;
     public float minScale;
     public float scaleRate;
+    public float timeBetweenScaleSoundFX = 1f;
     // private scale option variables
     private float currentScale = 1f;
     public float GetCurrentScale() { return currentScale; } // public getter
@@ -40,6 +43,12 @@ public class PlayerScaleController : MonoBehaviour
         transform.localScale = new Vector3(1f, currentScale, 1f);
     }
 
+    private IEnumerator EndScaleFX(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        scaleMode = ScaleChangeMode.None;
+    }
+
     void FixedUpdate()
     {
         bool growInput = false;
@@ -53,23 +62,21 @@ public class PlayerScaleController : MonoBehaviour
             shrinkInput = Input.GetKey(KeyCode.LeftControl);
 
             // change scale mode and play FX
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (growInput && scaleMode != ScaleChangeMode.Growing)
             {
                 print ("grow!");
                 scaleMode = ScaleChangeMode.Growing;
                 AudioManager.instance.StopSound("change_scale_FX");
-                AudioManager.instance.PlaySound(AudioManager.instance.database.grow_fx, 0.5f, false, 1f, "change_scale_FX");
+                AudioManager.instance.PlaySound(AudioManager.instance.database.grow_fx, 0.25f, false, 1f, "change_scale_FX");
+                StartCoroutine(EndScaleFX(timeBetweenScaleSoundFX));
             }
-            else if (Input.GetKeyDown(KeyCode.LeftControl))
+            else if (shrinkInput && scaleMode != ScaleChangeMode.Shrinking)
             {
                 print ("shrink!");
                 scaleMode = ScaleChangeMode.Shrinking;
                 AudioManager.instance.StopSound("change_scale_FX");
-                AudioManager.instance.PlaySound(AudioManager.instance.database.shrink_fx, 0.5f, false, 1f, "change_scale_FX");
-            }
-            else
-            {
-                scaleMode = ScaleChangeMode.None;
+                AudioManager.instance.PlaySound(AudioManager.instance.database.shrink_fx, 0.25f, false, 1f, "change_scale_FX");
+                StartCoroutine(EndScaleFX(timeBetweenScaleSoundFX));
             }
         }
         else if (GameManager.instance.playMode == GameManager.PlayMode.VRHeadset)
@@ -79,23 +86,21 @@ public class PlayerScaleController : MonoBehaviour
             shrinkInput = OVRInput.Get(OVRInput.Button.One);
 
             // change scale mode and play FX
-            if (OVRInput.GetDown(OVRInput.Button.Two))
+            if (growInput && scaleMode != ScaleChangeMode.Growing)
             {
                 print ("grow!");
                 scaleMode = ScaleChangeMode.Growing;
                 AudioManager.instance.StopSound("change_scale_FX");
                 AudioManager.instance.PlaySound(AudioManager.instance.database.grow_fx, 0.5f, false, 1f, "change_scale_FX");
+                StartCoroutine(EndScaleFX(timeBetweenScaleSoundFX));
             }
-            else if (OVRInput.GetDown(OVRInput.Button.One))
+            else if (shrinkInput && scaleMode != ScaleChangeMode.Shrinking)
             {
                 print ("shrink!");
                 scaleMode = ScaleChangeMode.Shrinking;
                 AudioManager.instance.StopSound("change_scale_FX");
                 AudioManager.instance.PlaySound(AudioManager.instance.database.shrink_fx, 0.5f, false, 1f, "change_scale_FX");
-            }
-            else
-            {
-                scaleMode = ScaleChangeMode.None;
+                StartCoroutine(EndScaleFX(timeBetweenScaleSoundFX));
             }
         }
 
