@@ -1,6 +1,5 @@
 using UnityEngine;
 using System;
-using TMPro;
 
 /// <summary>
 /// https://gist.github.com/KarlRamstedt/407d50725c7b6abeaf43aee802fdd88e
@@ -24,9 +23,6 @@ public class PlayerPositionController : MonoBehaviour
     public float playerSpeed = 1.0f;
     public float minSpeed = 0.1f;
     public float maxSpeed = 1f;
-
-    [Header("UI Options")]
-    public TextMeshProUGUI positionText;
 
 	void FixedUpdate()
     {
@@ -67,6 +63,5 @@ public class PlayerPositionController : MonoBehaviour
         float speedRegulator = Mathf.Clamp(Mathf.Log(PlayerScaleController.instance.GetCurrentScale()), minSpeed, maxSpeed) * playerSpeed * 0.1f;
         // translate player position
         transform.Translate(forwardVector * forward_multiplier * speedRegulator + rightVector * right_multiplier * speedRegulator);
-        positionText.text = "current pos: " + transform.position;
 	}
 }

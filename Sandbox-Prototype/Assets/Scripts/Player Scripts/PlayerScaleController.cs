@@ -1,5 +1,4 @@
 using UnityEngine;
-using TMPro;
 
 public class PlayerScaleController : MonoBehaviour
 {
@@ -21,8 +20,13 @@ public class PlayerScaleController : MonoBehaviour
     // private camera option variables
     private float currentFOV;
 
-    [Header("UI Options")]
-    public TextMeshProUGUI scaleText;
+    public enum ScaleChangeMode
+    {
+        None, 
+        Growing,
+        Shrinking
+    }
+    private ScaleChangeMode scaleMode = ScaleChangeMode.None;
 
     void Awake()
     {
@@ -34,14 +38,10 @@ public class PlayerScaleController : MonoBehaviour
         // set staring scale
         currentScale = startScale;
         transform.localScale = new Vector3(1f, currentScale, 1f);
-        // set scale text
-        scaleText.text = "current scale: " + currentScale;
     }
 
     void FixedUpdate()
     {
-        OVRInput.FixedUpdate();
-
         bool growInput = false;
         bool shrinkInput = false;
 
@@ -51,13 +51,53 @@ public class PlayerScaleController : MonoBehaviour
             // left shift for growing
             growInput = Input.GetKey(KeyCode.LeftShift);
             shrinkInput = Input.GetKey(KeyCode.LeftControl);
+
+            // change scale mode and play FX
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                print ("grow!");
+                scaleMode = ScaleChangeMode.Growing;
+                AudioManager.instance.StopSound("change_scale_FX");
+                AudioManager.instance.PlaySound(AudioManager.instance.database.grow_fx, 0.5f, false, 1f, "change_scale_FX");
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                print ("shrink!");
+                scaleMode = ScaleChangeMode.Shrinking;
+                AudioManager.instance.StopSound("change_scale_FX");
+                AudioManager.instance.PlaySound(AudioManager.instance.database.shrink_fx, 0.5f, false, 1f, "change_scale_FX");
+            }
+            else
+            {
+                scaleMode = ScaleChangeMode.None;
+            }
         }
         else if (GameManager.instance.playMode == GameManager.PlayMode.VRHeadset)
         {
+            OVRInput.FixedUpdate();
             growInput = OVRInput.Get(OVRInput.Button.Two);
             shrinkInput = OVRInput.Get(OVRInput.Button.One);
-        }
 
+            // change scale mode and play FX
+            if (OVRInput.GetDown(OVRInput.Button.Two))
+            {
+                print ("grow!");
+                scaleMode = ScaleChangeMode.Growing;
+                AudioManager.instance.StopSound("change_scale_FX");
+                AudioManager.instance.PlaySound(AudioManager.instance.database.grow_fx, 0.5f, false, 1f, "change_scale_FX");
+            }
+            else if (OVRInput.GetDown(OVRInput.Button.One))
+            {
+                print ("shrink!");
+                scaleMode = ScaleChangeMode.Shrinking;
+                AudioManager.instance.StopSound("change_scale_FX");
+                AudioManager.instance.PlaySound(AudioManager.instance.database.shrink_fx, 0.5f, false, 1f, "change_scale_FX");
+            }
+            else
+            {
+                scaleMode = ScaleChangeMode.None;
+            }
+        }
 
         // boolean XOR (either grow or shrink or neither)
         if (growInput ^ shrinkInput)
@@ -85,7 +125,6 @@ public class PlayerScaleController : MonoBehaviour
 
             // update transform scale
             transform.localScale = new Vector3(1f, currentScale, 1f);
-            scaleText.text = "current scale: " + currentScale;
         }
 
         // update cameras

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class TimePerceptionController : MonoBehaviour
 {
@@ -21,8 +20,6 @@ public class TimePerceptionController : MonoBehaviour
     public float maxTimeScale = 2f;
     public float minTimeScale = 0.5f;
 
-    public TextMeshProUGUI timeScaleText;
-
     void FixedUpdate()
     {
         if (changeTimeScale)
@@ -40,9 +37,6 @@ public class TimePerceptionController : MonoBehaviour
             {
                 timeScale = Mathf.Lerp(minTimeScale, 1f, currentScale / startScale);
             }
-
-            // set time scale text
-            timeScaleText.text = "current time scale: " + timeScale;
         }
     }
 }
