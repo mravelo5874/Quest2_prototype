@@ -12,4 +12,5 @@ public class AudioDatabase : MonoBehaviour
     public AudioClip sad_blip;
     public AudioClip wood_blip;
     public AudioClip win_tune;
+    public AudioClip sparkle;
 }

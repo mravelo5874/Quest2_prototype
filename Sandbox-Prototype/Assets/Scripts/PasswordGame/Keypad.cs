@@ -6,7 +6,7 @@ using TMPro;
 public class Keypad : MonoBehaviour
 {
     public TextMeshProUGUI keypadPanel;
-    public float inputDelay = 0.1f;
+    public float inputDelay = 0.25f;
     public MyObject doorObject;
 
     private string currentText = "";
@@ -38,7 +38,7 @@ public class Keypad : MonoBehaviour
                 }
             }
         }
-        // gte left controller trigger input
+        // get left controller trigger input
         else if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
         {
             // send raycast from left controller
@@ -68,7 +68,7 @@ public class Keypad : MonoBehaviour
                 float currentTimeScale = TimePerceptionController.instance.GetGameTimeScale();
                 AudioManager.instance.PlaySound(
                         AudioManager.instance.database.win_tune, 
-                        0.25f, 
+                        0.5f, 
                         false, 
                         Mathf.Lerp(0.5f, 2f, currentTimeScale / TimePerceptionController.instance.maxTimeScale), 
                         "clock_tick"

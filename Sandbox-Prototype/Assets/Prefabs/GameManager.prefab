@@ -172,3 +172,4 @@ MonoBehaviour:
   sad_blip: {fileID: 8300000, guid: b5477fc2c02999d4b9645f4a235565c0, type: 3}
   wood_blip: {fileID: 8300000, guid: fbe717db743fee74aa8e01d2392e7ebf, type: 3}
   win_tune: {fileID: 8300000, guid: 9ba16f035d6d82a48b65c0ae7cce15c8, type: 3}
+  sparkle: {fileID: 8300000, guid: 67070de95fe1b3744ae2f3673f5b1204, type: 3}
