@@ -40,7 +40,7 @@ public class PlayerScaleController : MonoBehaviour
         }
         // set staring scale
         currentScale = startScale;
-        transform.localScale = new Vector3(1f, currentScale, 1f);
+        transform.localScale = new Vector3(currentScale, currentScale, currentScale);
     }
 
     private IEnumerator EndScaleFX(float delay)
@@ -129,7 +129,7 @@ public class PlayerScaleController : MonoBehaviour
                 currentScale = minScale;
 
             // update transform scale
-            transform.localScale = new Vector3(1f, currentScale, 1f);
+            transform.localScale = new Vector3(currentScale, currentScale, currentScale);
         }
 
         // update cameras

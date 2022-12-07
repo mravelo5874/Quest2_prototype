@@ -33,22 +33,33 @@ public class GameManager : MonoBehaviour
     private float resetTimer = 0f;
     private float resetHoldAmount = 2f; // hold button for 2 seconds to reset scene
 
+    // line colors
+    [SerializeField]
+    public Gradient defaultLineGrad;
+    [SerializeField]
+    public Gradient triggerLineGrad;
+
     void Update()
     {
         OVRInput.Update();
 
-        if (OVRInput.Get(OVRInput.Button.Three))
+        if (OVRInput.Get(OVRInput.Button.Three) || Input.GetKeyDown(KeyCode.R))
         {
             resetTimer += Time.deltaTime;
             if (resetTimer > resetHoldAmount)
             {
                 resetTimer = 0f;
-                SceneManager.LoadScene("SandboxScene");
+                SceneManager.LoadScene("MainHubScene");
             }
         }
         else    
         {
             resetTimer = 0f;
         }
+    }
+
+    public void GoToScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 }

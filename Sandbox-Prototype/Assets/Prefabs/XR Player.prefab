@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6294929894126495456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.1176, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -43,6 +43,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6294929894872215550}
+  - component: {fileID: 6913361421290908056}
   - component: {fileID: 6294929894872215538}
   - component: {fileID: 6294929894872215539}
   - component: {fileID: 6294929894872215548}
@@ -69,6 +70,20 @@ Transform:
   m_Father: {fileID: 6294929894126495463}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6913361421290908056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6294929894872215551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf8f16ca361ada347aaf373f6b9a6ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHandLine: {fileID: 6294929894872215548}
+  XR_left_line: {fileID: 6294929894872215549}
 --- !u!114 &6294929894872215538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,8 +421,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0, b: 1, a: 1}
-      key1: {r: 0, g: 0, b: 1, a: 1}
+      key0: {r: 0, g: 1, b: 0.92549014, a: 1}
+      key1: {r: 0, g: 1, b: 0.92549026, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -430,7 +445,7 @@ LineRenderer:
       atime5: 0
       atime6: 0
       atime7: 0
-      m_Mode: 0
+      m_Mode: 1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 4
@@ -453,7 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e988983f96fe1dd48800bcdfc82f23e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LineWidth: 0.02
+  m_LineWidth: 0.025
   m_OverrideInteractorLineLength: 1
   m_LineLength: 10
   m_WidthCurve:
@@ -511,8 +526,8 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   m_InvalidColorGradient:
     serializedVersion: 2
-    key0: {r: 1, g: 0, b: 0, a: 1}
-    key1: {r: 1, g: 0, b: 0, a: 1}
+    key0: {r: 0, g: 1, b: 0.92549014, a: 1}
+    key1: {r: 0, g: 1, b: 0.92549026, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -535,7 +550,7 @@ MonoBehaviour:
     atime5: 0
     atime6: 0
     atime7: 0
-    m_Mode: 0
+    m_Mode: 1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   m_SmoothMovement: 0
@@ -552,6 +567,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6294929895466463231}
+  - component: {fileID: 2943834972708005243}
   - component: {fileID: 6294929895466463219}
   - component: {fileID: 6294929895466463228}
   - component: {fileID: 6294929895466463229}
@@ -578,6 +594,20 @@ Transform:
   m_Father: {fileID: 6294929894126495463}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2943834972708005243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6294929895466463224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eb8ca5ad01c0d741937f93a943cda1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightHandLine: {fileID: 6294929895466463229}
+  XR_right_line: {fileID: 6294929895466463230}
 --- !u!114 &6294929895466463219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -915,8 +945,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0, b: 1, a: 1}
-      key1: {r: 0, g: 0, b: 1, a: 1}
+      key0: {r: 0, g: 1, b: 0.92549014, a: 1}
+      key1: {r: 0, g: 1, b: 0.92549026, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -939,7 +969,7 @@ LineRenderer:
       atime5: 0
       atime6: 0
       atime7: 0
-      m_Mode: 0
+      m_Mode: 1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 4
@@ -962,7 +992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e988983f96fe1dd48800bcdfc82f23e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LineWidth: 0.02
+  m_LineWidth: 0.025
   m_OverrideInteractorLineLength: 1
   m_LineLength: 10
   m_WidthCurve:
@@ -1020,8 +1050,8 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   m_InvalidColorGradient:
     serializedVersion: 2
-    key0: {r: 1, g: 0, b: 0, a: 1}
-    key1: {r: 1, g: 0, b: 0, a: 1}
+    key0: {r: 0, g: 1, b: 0.92549014, a: 1}
+    key1: {r: 0, g: 1, b: 0.92549026, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1044,7 +1074,7 @@ MonoBehaviour:
     atime5: 0
     atime6: 0
     atime7: 0
-    m_Mode: 0
+    m_Mode: 1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   m_SmoothMovement: 0
@@ -1069,7 +1099,7 @@ GameObject:
   - component: {fileID: 6294929895715046386}
   m_Layer: 0
   m_Name: XR Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1102,11 +1132,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0cb9aa70a22847b5925ee5f067c10a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 6294929896019207172}
   m_OriginBaseGameObject: {fileID: 6294929895715046398}
   m_CameraFloorOffsetObject: {fileID: 6294929894126495456}
-  m_RequestedTrackingOriginMode: 0
-  m_CameraYOffset: 1.1176
+  m_RequestedTrackingOriginMode: 1
+  m_CameraYOffset: 0
 --- !u!114 &6294929895715046397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1133,8 +1163,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 961524327a9074dd9bb09e9d188dca3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 4
-  positionText: {fileID: 0}
+  playerCamera: {fileID: 6294929896019207172}
+  rb: {fileID: 6294929895715046385}
+  playerSpeed: 2
+  minSpeed: 0.1
+  maxSpeed: 1
 --- !u!114 &6294929895715046384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1147,14 +1180,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f23f0327e7c51a42b2b58aa7c13a1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startScale: 2.5
-  maxScale: 26
-  minScale: 0.01
-  scaleRate: 5
-  changeFOV: 1
+  startScale: 1
+  maxScale: 100
+  minScale: 0.05
+  scaleRate: 0.25
+  timeBetweenScaleSoundFX: 3
+  changeFOV: 0
   minFOV: 40
   maxFOV: 90
-  scaleText: {fileID: 0}
 --- !u!54 &6294929895715046385
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1165,7 +1198,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1178,13 +1211,13 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6294929895715046398}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 16e58425abfbaf64481d0894348577bc, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1
-  m_Height: 1.5
+  m_Radius: 0.01
+  m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 0.75, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6294929896019207168
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,6 +1230,7 @@ GameObject:
   - component: {fileID: 6294929896019207172}
   - component: {fileID: 6294929896019207173}
   - component: {fileID: 6294929896019207174}
+  - component: {fileID: 1634379783}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1229,7 +1263,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1343,3 +1377,17 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   m_HasMigratedActions: 1
+--- !u!114 &1634379783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6294929896019207168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3241d6f376c82b745bd82185dab9f584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensitivity: 2
+  yRotationLimit: 90
