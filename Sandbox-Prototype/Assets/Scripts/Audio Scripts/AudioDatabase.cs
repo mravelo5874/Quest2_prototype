@@ -15,4 +15,5 @@ public class AudioDatabase : MonoBehaviour
     public AudioClip sparkle;
     public AudioClip explosion;
     public AudioClip alarm_beep;
+    public AudioClip teleport;
 }

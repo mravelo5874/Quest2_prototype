@@ -39,6 +39,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public Gradient triggerLineGrad;
 
+    void Start()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
     void Update()
     {
         OVRInput.Update();
@@ -61,5 +66,16 @@ public class GameManager : MonoBehaviour
     public void GoToScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        AudioManager.instance.PlaySound(
+                AudioManager.instance.database.teleport, 
+                0.5f, 
+                false, 
+                0.5f, 
+                "teleport"
+            );
     }
 }

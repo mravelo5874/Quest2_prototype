@@ -176,6 +176,7 @@ MonoBehaviour:
   sparkle: {fileID: 8300000, guid: 67070de95fe1b3744ae2f3673f5b1204, type: 3}
   explosion: {fileID: 8300000, guid: 3a4842116f45a7b4d9a9b2c15e6ef608, type: 3}
   alarm_beep: {fileID: 8300000, guid: 76687acb843cffd41a8fcaddac5fbba8, type: 3}
+  teleport: {fileID: 8300000, guid: 92e60fab11bf38341b60a8429f9783af, type: 3}
 --- !u!114 &784239938
 MonoBehaviour:
   m_ObjectHideFlags: 0
