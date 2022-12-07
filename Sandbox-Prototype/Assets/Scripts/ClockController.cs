@@ -16,6 +16,8 @@ public class ClockController : MonoBehaviour
     const float MIN_TO_DEG = -6f;
     const float SEC_TO_DEG = -6f;
 
+    public bool isOn = true;
+
     public Transform secondHandPivot;
     public Transform minuteHandPivot;
 
@@ -25,6 +27,10 @@ public class ClockController : MonoBehaviour
 
     void Update()
     {
+        // return if turned off
+        if (!isOn)
+            return;
+
         float currentTimeScale = TimePerceptionController.instance.GetGameTimeScale();
 
         prevTime = timer;

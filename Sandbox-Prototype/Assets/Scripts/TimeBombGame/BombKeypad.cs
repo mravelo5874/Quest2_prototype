@@ -3,19 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Keypad : MonoBehaviour
+public class BombKeypad : MonoBehaviour
 {
-    public TextMeshProUGUI keypadPanel;
+    public TextMeshProUGUI numberPanel;
+    public TextMeshProUGUI negativePanel;
     public float inputDelay = 0.25f;
-    public MyObject doorObject;
 
     private string currentText = "";
+    private bool isNeg = false;
     private bool canInput = true;
     private bool winGame = false;
 
+
     void Start()
     {
-        keypadPanel.text = currentText;
+        numberPanel.text = currentText;
+        negativePanel.text = "";
+        isNeg = false;
     }
 
     void Update()
@@ -58,15 +62,18 @@ public class Keypad : MonoBehaviour
 
     public void OnEnterPressed()
     {
-        // check if win game
-        if (PasswordGameManager.instance.GetPasswordString() == currentText)
+        //check if win game
+        int num = int.Parse(currentText);
+        if (isNeg)
+        {
+            num *= -1;
+        }
+
+        if (num == TimeBombGameManager.instance.BOMB_PASSCODE)
         {
             if (!winGame)
             {
                 winGame = true;
-                // enable the portal back to main hub
-                PasswordGameManager.instance.portalCollider.enabled = true;
-                PasswordGameManager.instance.portalRenderer.enabled = true;
                 // play sound fx
                 float currentTimeScale = TimePerceptionController.instance.GetGameTimeScale();
                 AudioManager.instance.PlaySound(
@@ -77,7 +84,9 @@ public class Keypad : MonoBehaviour
                         "clock_tick"
                     );
 
-                doorObject.ChangeScale(0f, 2f);
+                TimeBombGameManager.instance.stopTimer = true;
+                TimeBombGameManager.instance.clock.isOn = false;
+                StartCoroutine(RestartLevelDelay(5f));
             }
         }
         else
@@ -95,10 +104,19 @@ public class Keypad : MonoBehaviour
         }
     }
 
+
+    private IEnumerator RestartLevelDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        GameManager.instance.GoToScene("MainHubScene");
+    }
+
     public void OnClearPressed()
     {
         currentText = "";
-        keypadPanel.text = currentText;
+        numberPanel.text = currentText;
+        negativePanel.text = "";
+        isNeg = false;
 
         // play sound fx
         float currentTimeScale = TimePerceptionController.instance.GetGameTimeScale();
@@ -174,51 +192,49 @@ public class Keypad : MonoBehaviour
                 newChar = "9";
                 break;
             case 10:
-                newChar = "A";
+                if (isNeg)
+                {
+                    isNeg = false;
+                    negativePanel.text = "";
+                }
+                else if (!isNeg)
+                {
+                    isNeg = true;
+                    negativePanel.text = "-";
+                }
                 break;
             case 11:
-                newChar = "B";
-                break;
+                int randomNum = Random.Range(0, 99999);
+                int neg = Random.Range(0, 2);
+                currentText = randomNum.ToString();
+                numberPanel.text = currentText;
+                if (neg == 0)
+                {
+                    isNeg = false;
+                    negativePanel.text = "";
+                }
+                else if (neg == 1)
+                {
+                    isNeg = true;
+                    negativePanel.text = "-";
+                }
+                return;
             case 12:
-                newChar = "C";
-                break;
-            case 13:
-                newChar = "D";
-                break;
-            case 14:
-                newChar = "E";
-                break;
-            case 15:
-                newChar = "F";
-                break;
-            case 16:
-                newChar = "G";
-                break;
-            case 17:
-                newChar = "H";
-                break;
-            case 18:
-                newChar = "I";
-                break;
-            case 19:
-                newChar = "J";
-                break;
-            case 20:
                 OnEnterPressed();
                 return;
-            case 21:
+            case 13:
                 OnClearPressed();
                 return;
         }
 
-        if (currentText.Length >= PasswordGameManager.instance.passwordLength)
+        if (currentText.Length >= 8)
         {
             return;
         }
         else
         {
             currentText += newChar;
-            keypadPanel.text = currentText;
+            numberPanel.text = currentText;
         }
     }
 }

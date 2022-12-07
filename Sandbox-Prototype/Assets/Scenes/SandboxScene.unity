@@ -14591,7 +14591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeTimeScale: 1
-  maxTimeScale: 5
+  maxTimeScale: 10
   minTimeScale: 0.2
 --- !u!1 &786425505
 GameObject:
@@ -15970,6 +15970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0c56b26819611c4fac6bf6e86acb29c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOn: 1
   secondHandPivot: {fileID: 1062979492}
   minuteHandPivot: {fileID: 722498434}
 --- !u!1 &894664157

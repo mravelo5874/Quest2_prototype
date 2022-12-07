@@ -14,6 +14,8 @@ public class PasswordGameManager : MonoBehaviour
         }
     }
     public TextMeshProUGUI numberPanelText;
+    public Collider portalCollider;
+    public MeshRenderer portalRenderer;
 
     public int passwordLength = 6;
     public float timeBetweenChars = 0.01f;
@@ -25,6 +27,10 @@ public class PasswordGameManager : MonoBehaviour
 
     void Start()
     {
+        // portal is closed until player gets the password correct
+        portalCollider.enabled = false;
+        portalRenderer.enabled = false;
+        
         // generate new random password
         currentPassword = new List<char>();
         passwordString = "";

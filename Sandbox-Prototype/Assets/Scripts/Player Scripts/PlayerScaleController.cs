@@ -6,6 +6,8 @@ public class PlayerScaleController : MonoBehaviour
 {
     public static PlayerScaleController instance;
 
+    public bool canInput = true;
+
     [Header("Scale Options")]
     public float startScale = 1f;
     public float maxScale;
@@ -51,6 +53,10 @@ public class PlayerScaleController : MonoBehaviour
 
     void FixedUpdate()
     {
+        // return if player cannot input
+        if (!canInput)
+            return;
+
         bool growInput = false;
         bool shrinkInput = false;
 

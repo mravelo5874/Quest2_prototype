@@ -13,4 +13,6 @@ public class AudioDatabase : MonoBehaviour
     public AudioClip wood_blip;
     public AudioClip win_tune;
     public AudioClip sparkle;
+    public AudioClip explosion;
+    public AudioClip alarm_beep;
 }

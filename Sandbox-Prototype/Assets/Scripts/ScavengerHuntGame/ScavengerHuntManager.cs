@@ -6,12 +6,14 @@ public class ScavengerHuntManager : MonoBehaviour
 {
     public List<ScavengerHuntCoin> allGameCoins;
     public Collider portalCollider;
+    public MeshRenderer portalRenderer;
     private bool winGame = false;
 
     void Start()
     {
         // portal is closed until player finds all the coins
         portalCollider.enabled = false;
+        portalRenderer.enabled = false;
     }
 
     void Update()
@@ -68,6 +70,7 @@ public class ScavengerHuntManager : MonoBehaviour
 
         winGame = true;
         portalCollider.enabled = true;
+        portalRenderer.enabled = true;
         // play sound fx
         float currentTimeScale = TimePerceptionController.instance.GetGameTimeScale();
         AudioManager.instance.PlaySound(

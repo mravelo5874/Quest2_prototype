@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 7937030607817203758}
   - component: {fileID: 8880169712569596095}
   - component: {fileID: 9055591741413655345}
+  - component: {fileID: 784239938}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -173,3 +174,20 @@ MonoBehaviour:
   wood_blip: {fileID: 8300000, guid: fbe717db743fee74aa8e01d2392e7ebf, type: 3}
   win_tune: {fileID: 8300000, guid: 9ba16f035d6d82a48b65c0ae7cce15c8, type: 3}
   sparkle: {fileID: 8300000, guid: 67070de95fe1b3744ae2f3673f5b1204, type: 3}
+  explosion: {fileID: 8300000, guid: 3a4842116f45a7b4d9a9b2c15e6ef608, type: 3}
+  alarm_beep: {fileID: 8300000, guid: 76687acb843cffd41a8fcaddac5fbba8, type: 3}
+--- !u!114 &784239938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7937030607817203756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbee8c728858f4145aae6ced0f7e0be3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  changeTimeScale: 1
+  maxTimeScale: 10
+  minTimeScale: 0.1

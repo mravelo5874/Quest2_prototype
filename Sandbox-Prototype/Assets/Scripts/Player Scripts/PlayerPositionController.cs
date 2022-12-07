@@ -23,9 +23,14 @@ public class PlayerPositionController : MonoBehaviour
     public float playerSpeed = 1.0f;
     public float minSpeed = 0.1f;
     public float maxSpeed = 1f;
+    public bool canInput = true;
 
 	void FixedUpdate()
     {
+        // return if player cannot input
+        if (!canInput)
+            return;
+
         OVRInput.FixedUpdate();
         
         bool forward_input = false;
@@ -42,26 +47,30 @@ public class PlayerPositionController : MonoBehaviour
         }
         else if (GameManager.instance.playMode == GameManager.PlayMode.VRHeadset)
         {
-            forward_input = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y > 0f;
-            backward_input = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y < 0f;
-            left_input = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).x < 0f;
-            right_input = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).x > 0f;
+            forward_input = OVRInput.Get(OVRInput.Button.PrimaryThumbstickUp);
+            backward_input = OVRInput.Get(OVRInput.Button.PrimaryThumbstickDown);
+            left_input = OVRInput.Get(OVRInput.Button.PrimaryThumbstickLeft);
+            right_input = OVRInput.Get(OVRInput.Button.PrimaryThumbstickRight);
         }
         
         float forward_multiplier = (forward_input) ? 1.0f : (backward_input) ? -1.0f : 0.0f;
         float right_multiplier = (right_input) ? 1.0f : (left_input) ? -1.0f : 0.0f;
 
+        Vector3 playerForward = playerCamera.transform.forward;
+        Vector3 playerRight = playerCamera.transform.right;
+
         // get forward vector
-        Vector3 forwardVector = playerCamera.transform.forward;
+        Vector3 forwardVector = playerForward;
         forwardVector.y = 0f;
         forwardVector.Normalize();
         // get right vector
-        Vector3 rightVector = playerCamera.transform.right;
+        Vector3 rightVector = playerRight;
         rightVector.y = 0f;
         rightVector.Normalize();
         // calculate speed regulator
         float speedRegulator = Mathf.Clamp(Mathf.Log(PlayerScaleController.instance.GetCurrentScale()), minSpeed, maxSpeed) * playerSpeed * 0.1f;
         // translate player position
-        transform.Translate(forwardVector * forward_multiplier * speedRegulator + rightVector * right_multiplier * speedRegulator);
+        
+        transform.Translate((forwardVector * forward_multiplier * speedRegulator) + (rightVector * right_multiplier * speedRegulator));
 	}
 }
