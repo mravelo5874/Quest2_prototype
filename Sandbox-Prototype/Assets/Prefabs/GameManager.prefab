@@ -177,6 +177,14 @@ MonoBehaviour:
   explosion: {fileID: 8300000, guid: 3a4842116f45a7b4d9a9b2c15e6ef608, type: 3}
   alarm_beep: {fileID: 8300000, guid: 76687acb843cffd41a8fcaddac5fbba8, type: 3}
   teleport: {fileID: 8300000, guid: 92e60fab11bf38341b60a8429f9783af, type: 3}
+  song_1: {fileID: 8300000, guid: 84dd072a2d31d0e47981957dba8f9d6f, type: 3}
+  song_2: {fileID: 8300000, guid: 21c846aa1278c2a42aca5c7ba3a1df04, type: 3}
+  song_3: {fileID: 8300000, guid: 43cdb1506e85076428d15243c3a5dda9, type: 3}
+  song_4: {fileID: 8300000, guid: 059004bca7a3b0d49996f1b7b724f51a, type: 3}
+  forest: {fileID: 8300000, guid: 1c40e8c3628dab44588a7fca8b11f5b9, type: 3}
+  engine: {fileID: 8300000, guid: 446697ad107f80d448346f05035a1d38, type: 3}
+  river: {fileID: 8300000, guid: fe1994a57c11c3e4288eaf8e7015b12f, type: 3}
+  trumpet: {fileID: 8300000, guid: 0efaec27a1f41b6419d68d4eed0ccad7, type: 3}
 --- !u!114 &784239938
 MonoBehaviour:
   m_ObjectHideFlags: 0

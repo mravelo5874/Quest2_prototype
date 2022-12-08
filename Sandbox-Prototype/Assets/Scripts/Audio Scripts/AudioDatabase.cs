@@ -16,4 +16,12 @@ public class AudioDatabase : MonoBehaviour
     public AudioClip explosion;
     public AudioClip alarm_beep;
     public AudioClip teleport;
+    public AudioClip song_1;
+    public AudioClip song_2;
+    public AudioClip song_3;
+    public AudioClip song_4;
+    public AudioClip forest;
+    public AudioClip engine;
+    public AudioClip river;
+    public AudioClip trumpet;
 }

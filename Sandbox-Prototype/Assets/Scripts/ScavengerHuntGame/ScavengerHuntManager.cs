@@ -1,19 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ScavengerHuntManager : MonoBehaviour
 {
+    public TextMeshProUGUI coinsLeftText;
     public List<ScavengerHuntCoin> allGameCoins;
     public Collider portalCollider;
     public MeshRenderer portalRenderer;
+
     private bool winGame = false;
+    private int coinsLeft = 8;
 
     void Start()
     {
         // portal is closed until player finds all the coins
         portalCollider.enabled = false;
         portalRenderer.enabled = false;
+
+        // set conis left text
+        coinsLeftText.text = coinsLeft.ToString() + " coins left!";
+
+        // play forest ambiance
+        AudioManager.instance.PlaySound(
+                AudioManager.instance.database.forest, 
+                0.5f,
+                true, 
+                1f, 
+                "forest"
+            );
+        AudioManager.instance.PlaySound(
+                AudioManager.instance.database.river, 
+                0.1f,
+                true, 
+                1f, 
+                "forest"
+            );
     }
 
     void Update()
@@ -59,14 +82,21 @@ public class ScavengerHuntManager : MonoBehaviour
         {
             return;
         }
+        int activatedCoins = 0;
         // check each coin to see if it is activated
         foreach(ScavengerHuntCoin coin in allGameCoins)
         {
-            if (!coin.GetIsActivated())
+            if (coin.GetIsActivated())
             {
-                return;
+                activatedCoins++;
             }
         }
+        coinsLeft = 8 - activatedCoins;
+        // set conis left text
+        coinsLeftText.text = coinsLeft.ToString() + " coins left!";
+        // return if all coins are activated
+        if (activatedCoins != 8)
+            return;
 
         winGame = true;
         portalCollider.enabled = true;

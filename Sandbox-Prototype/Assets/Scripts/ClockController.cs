@@ -17,6 +17,7 @@ public class ClockController : MonoBehaviour
     const float SEC_TO_DEG = -6f;
 
     public bool isOn = true;
+    public bool playAudio = true;
 
     public Transform secondHandPivot;
     public Transform minuteHandPivot;
@@ -39,13 +40,16 @@ public class ClockController : MonoBehaviour
         // play clock tick every "second"
         if (Mathf.FloorToInt(prevTime) <Mathf.FloorToInt(timer))
         {
-            AudioManager.instance.PlaySound(
-                AudioManager.instance.database.clock_tick, 
-                0.05f, 
-                false, 
-                Mathf.Lerp(0.5f, 2f, currentTimeScale / TimePerceptionController.instance.maxTimeScale), 
-                "clock_tick"
-            );
+            if (playAudio)
+            {
+                AudioManager.instance.PlaySound(
+                    AudioManager.instance.database.clock_tick, 
+                    0.05f, 
+                    false, 
+                    Mathf.Lerp(0.5f, 2f, currentTimeScale / TimePerceptionController.instance.maxTimeScale), 
+                    "clock_tick"
+                );
+            }
         }
 
         // update hands

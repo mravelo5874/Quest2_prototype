@@ -27,6 +27,16 @@ public class PasswordGameManager : MonoBehaviour
 
     void Start()
     {
+        // play song 3
+        float currentTimeScale = TimePerceptionController.instance.GetGameTimeScale();
+        AudioManager.instance.PlaySound(
+                AudioManager.instance.database.song_3, 
+                0.2f,
+                true, 
+                0.5f, 
+                "song3"
+            );
+
         // portal is closed until player gets the password correct
         portalCollider.enabled = false;
         portalRenderer.enabled = false;

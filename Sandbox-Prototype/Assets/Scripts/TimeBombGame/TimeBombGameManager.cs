@@ -97,7 +97,14 @@ public class TimeBombGameManager : MonoBehaviour
                         0.5f, 
                         false, 
                         Mathf.Lerp(0.5f, 2f, currentTimeScale / TimePerceptionController.instance.maxTimeScale),
-                        "clock_tick"
+                        "explode"
+                    );
+                AudioManager.instance.PlaySound(
+                        AudioManager.instance.database.engine, 
+                        0.5f, 
+                        true, 
+                        Mathf.Lerp(0.5f, 2f, currentTimeScale / TimePerceptionController.instance.maxTimeScale),
+                        "ssss"
                     );
 
                 // no more input allowed
